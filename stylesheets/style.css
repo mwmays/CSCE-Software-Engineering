@@ -1,0 +1,177 @@
+/* Project Taurus Stylesheet*/
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    margin-left: auto;
+    margin-right: auto;
+    width: 980px;
+}
+
+#main_container {
+    border: 1px solid black;
+
+}
+
+header {
+    border: 1px solid black;
+    height: 65px;
+}
+
+header h1 {
+    border: 1px solid black;
+    text-align: center;
+}
+
+#top_nav {
+    border: 1px solid black;
+    float: right; 
+    width: 976px;
+}
+
+
+#top_nav ul {
+    /*border: 1px solid cyan;*/
+    float: right; 
+    width: 600px;
+}
+
+#top_nav ul li {
+    float: left;
+    list-style-type: none;
+    margin-left: 45px;
+}
+
+#top_nav ul li a {
+    text-decoration: none;
+    font-size: 1.25em;
+    
+}
+
+
+/* Message controls nav might have to change later */
+#message_box {
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+#listings_box {
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+#controls {
+    float: left;
+    width: 976px;
+}
+
+#controls ul li{
+    float: left;
+    list-style-type: none;
+    margin-right: 5px;
+}
+
+#controls ul li a {
+    text-decoration: none;
+}
+
+#main_container {
+    clear: both;
+}
+
+
+#search_box {
+    /*border: 1px solid black; */
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+#search_box p {
+    margin-left: 75px;
+}
+
+#login_box {
+    border: 1px solid black; 
+    border-radius: 3px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 50px;
+    margin-bottom: 100px;
+    padding: 10px;
+    width: 300px;
+}
+
+#create_box {
+    border: 1px solid black; 
+    border-radius: 3px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 50px;
+    margin-bottom: 100px;
+    padding: 10px;
+    width: 300px;
+}
+
+#settings_box {
+    border: 1px solid black; 
+    border-radius: 3px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 50px;
+    margin-bottom: 100px;
+    padding: 10px;
+    width: 300px;
+}
+
+#success_box {
+        /*border: 1px solid black; */
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+#search_results {
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#search_results table {
+    border: 1px solid black;
+}
+
+#search_results table td{
+    border: 1px solid black;
+    padding: 5px;
+}
+
+#login {
+    margin-left: 
+}
+
+footer {
+    border: 1px solid black;
+    clear: both;
+}
+
+footer p {
+    margin: 0px; 
+    padding: 0px;
+    text-align: center;
+}

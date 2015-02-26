@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+    <head>
+        <title>My Profile</title>
+        <meta charset="UTF-8">
+        <!-- Regular Stylesheet -->
+        <link href="stylesheets/style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <!-- Header with navigation bar -->
+        <header>
+            <!-- Heading change name later -->
+            <h1>Project Taurus</h1>
+            <!-- Navigation with user controls -->
+            <nav id="top_nav">
+                <ul>
+                    <li><a href="user_hub.html">Back</a></li>
+                    <li><a href="listings.html">Listings</a></li>
+                    <li><a href="messages.html">Messages</a></li>
+                    <li><a href="edit_profile.html">Settings</a></li>
+                    <li><a href="log_out">Log Out</a></li>
+                </ul>
+            </nav>
+        </header>
+            <!-- Main Article -->
+            <article id="main_container">
+                <h1>My Profile</h1>
+                <!-- Section with all of the users profile information -->
+                <section id="settings_box">
+                    <form action="update.php" method="get" id="update_profile">
+                        <label for="update_email">New Email: </label>
+                            <input type="text" id="update_email">
+                        <br />
+                        <label for="update_password">New Password: </label>
+                            <input type="text" id="update_password">
+                        <br />
+                        <label for="confirm_new_password">Confirm Password: </label>
+                            <input type="text" id="confirm_new_password">
+                        <br />
+                        <input type="submit" value="Save Changes">
+                    </form>
+                </section>
+            </article>
+        <footer>
+            <p>&copy;2015</p>
+        </footer>
+    </body>
+</html>
