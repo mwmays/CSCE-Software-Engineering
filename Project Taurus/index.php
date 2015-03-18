@@ -38,6 +38,7 @@
                                 <input type="password" name="password" id="password">
                                 <input type="submit" value="Log In">
                             </form>
+                        <span id="create"><a href="create.php">Create Account</a></span>
                         <? }?>
 
                     </ul>

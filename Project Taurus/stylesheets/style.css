@@ -120,6 +120,12 @@ header {
     font-weight: lighter;
 }
 
+#create {
+    float: right;
+    clear: both;
+    font-size: .75em;
+    margin-top: 7px;
+}
 #controls ul li {
     float: left;
     list-style-type: none;
