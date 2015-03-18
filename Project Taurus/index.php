@@ -10,6 +10,17 @@
         <meta charset="UTF-8">
         <!-- Regular Stylesheet -->
         <link href="stylesheets/style.css" rel="stylesheet" type="text/css"/>
+        <!-- Core Library Script -->
+        <script src="jquery/jquery-1.11.2.min.js"></script>
+        <!-- UserInterface Library Script -->
+        <script src="jquery/jquery-ui-1.10.4.custom.min.js"></script>
+        <!-- Jquery Validation Script -->
+        <script src="jquery/jquery.validate.min.js"></script>
+        <!-- Additional Methods Script -->
+        <script src="jquery/additional-methods.min.js"></script>
+        <!-- Plugin Script -->
+        <script src="jquery/validation/validate.js"></script>
+        
     </head>
     <body>
         <!-- Header with navigation bar -->
@@ -31,18 +42,20 @@
                             <li><a href="logout.php"><img src="images/logout.png" height="20" width="60"></a></li>
                         </span>
                        <? } else { ?>
-                            <form action="profile.php" method="post">
-                                <label for="email">Email</label>
+                            <form action="profile.php" method="post" name="log_in_form" id="log_in_form">
+                                <label for="email">Email: </label>
                                 <input type="text" name="email" id="email">
-                                <label for="password">Password</label>
+                                <label for="password">Password: </label>
                                 <input type="password" name="password" id="password">
                                 <input type="submit" value="Log In">
                             </form>
                         <span id="create"><a href="create.php">Create Account</a></span>
+                         <span id="error_message"></span>
                         <? }?>
 
                     </ul>
                 </nav>
+            <h1>Project Taurus</h1>
         </header>
             <!-- Main Article -->
             <article id="main_container">
@@ -52,7 +65,7 @@
                     <!-- Code for search bar implementation-->
                         <!-- Search Bar -->
                     <form action="search.php" method="get" name="search_bar">
-                        <input type="text" name="name" size="75" placeholder="0137035152">
+                        <input type="text" name="search" id="search" size="75" placeholder="0137035152">
                         <input type="submit" value="Search">
                     </form>
                     
