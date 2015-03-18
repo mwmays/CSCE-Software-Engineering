@@ -85,16 +85,13 @@ header {
 
 #top_nav {
     border: 1px solid black;
-    float: right; 
-    width: 976px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px;
+    height: 20px;
+    width: 900px;
 }
 
-
-#top_nav ul {
-    /*border: 1px solid cyan;*/
-    float: right; 
-    
-}
 
 #top_nav ul li {
     float: left;
@@ -104,8 +101,23 @@ header {
 
 #top_nav ul li a {
     text-decoration: none;
-    font-size: 1.25em;
+    padding: 3px;
     
+}
+
+/* Log In form in top_nav */
+#top_nav form{
+    float: right;
+}
+
+/* Controls that show up after user has logged in */
+#user_controls {
+    float: right;
+}
+
+#user_controls h3{
+    font-family: arial;
+    font-weight: lighter;
 }
 
 #controls ul li {
