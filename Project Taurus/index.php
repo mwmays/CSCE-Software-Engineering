@@ -24,7 +24,7 @@
                         // Displays welcome message if user is logged in
                         if ($user_info['first_name']) { ?>
                         <span id="user_controls">
-                            <li><h3><a href="edit_profile.php"><?echo ucfirst($user_info['first_name']) . " " . ucfirst($user_info['last_name']);?></h3></a></li>
+                            <li><h3><a href="edit_profile.php" title="My Profile"><?echo ucfirst($user_info['first_name']) . " " . ucfirst($user_info['last_name']);?></h3></a></li>
                             <li><a href="index.php"><img src="images/home.png" height="20" width="30" title="Home"</a></li>
                             <li><a href="messages.php"><img src="images/mailbox.png" height="20" width="30" title="Messages"></a></li>
                             <li><a href="listings.php"><img src="images/listings.png" height="20" width="30" title="My Listings"></a></li>
@@ -52,10 +52,10 @@
                     <!-- Code for search bar implementation-->
                         <!-- Search Bar -->
                     <form action="search.php" method="get" name="search_bar">
-                        <input type="text" name="name" size="75">
+                        <input type="text" name="name" size="75" placeholder="0137035152">
                         <input type="submit" value="Search">
                     </form>
-                    <!-- Debug
+                    
                 </section>
             </article>
             <footer>

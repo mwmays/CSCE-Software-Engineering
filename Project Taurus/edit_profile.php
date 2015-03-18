@@ -24,7 +24,7 @@
                         // Displays welcome message if user is logged in
                         if ($user_info['first_name']) { ?>
                         <span id="user_controls">
-                            <li><h3><a href="edit_profile.php"><?echo ucfirst($user_info['first_name']) . " " . ucfirst($user_info['last_name']);?></h3></a></li>
+                            <li><h3><?echo ucfirst($user_info['first_name']) . " " . ucfirst($user_info['last_name']);?></h3></li>
                             <li><a href="index.php"><img src="images/home.png" height="20" width="30" title="Home"</a></li>
                             <li><a href="messages.php"><img src="images/mailbox.png" height="20" width="30" title="Messages"></a></li>
                             <li><a href="listings.php"><img src="images/listings.png" height="20" width="30" title="My Listings"></a></li>
