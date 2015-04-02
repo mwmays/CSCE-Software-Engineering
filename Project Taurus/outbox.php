@@ -6,7 +6,7 @@
 <!doctype html>
 <html>
     <head>
-        <title><? echo ucfirst($user_info['first_name']) . "'s";?> Messages</title>
+        <title><? echo ucfirst($user_info['first_name']) . "'s";?> Outbox</title>
         <meta charset="UTF-8">
         <!-- Regular Stylesheet -->
         <link href="stylesheets/style.css" rel="stylesheet" type="text/css"/>
@@ -50,42 +50,52 @@
                 <h1>Messages</h1>
                         <!-- Section for messages box container -->
                         <section id="messages_box">
-                            <?php    
+                           <?php  
 
 
-$message = $_POST['forward2'];
- if (isset($_POST['submit']))
+
+$user = $user_info['email'];
+$sql = mysql_query("SELECT * FROM messages WHERE from_user = '$user'")or die(mysql_error());
+
+while($row = mysql_fetch_array( $sql ))
 {
-// if the form has been submitted, this inserts it into the Database 
-  $to_user = $_POST['to_user'];
-  $from_user = $user_info['email'];
-  $message = $_POST['message'];
-  mysql_query("INSERT INTO messages (to_user, message, from_user) VALUES ('$to_user', '$message', '$from_user')")or die(mysql_error());
-  echo "Message succesfully sent!"; 
-}
-else
-{
-    // if the form has not been submitted, this will show the form
+/* I have set each element into it's OWN echo statement for easy readind.
+ however it is possible to create it in one echo statement like the following:
+ echo "Message ID#: ".$row['id'];
+*/
+  echo "<table border=1>";
+  
+  echo "</td></tr>";
+  echo "<tr><td>";
+  echo "To: ";
+  echo $row['to_user'];
+  echo "</td></tr>";
+  echo "<tr><td>";
+  echo "From: ";
+  echo $row['from_user'];
+  echo "</td></tr>";
+  echo "<tr><td>";
+  echo "Message: ";
+  echo $row[message];
+  echo "</td></tr>";
+  echo "</br>";
 ?>
+
 <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
 <table border="0">
-<tr><td colspan=2><h3>Send Message:</h3></td></tr>
+<tr><td colspan=2></td></tr>
 <tr><td></td><td>
-<input type="hidden" name="from_user" maxlength="32" value = <?php echo $user_info['first_name']; ?>>
-</td></tr>
-<tr><td>To User: </td><td>
-<input type="text" name="to_user" maxlength="32" value = "" placeholder = "user_email@email.com">
-</td></tr>
-<tr><td>Message: </td><td>
-<TEXTAREA NAME="message" COLS=50 ROWS=5 WRAP=SOFT></TEXTAREA>
+<input type="hidden" name="id" maxlength="5" value = "<?php echo $row['id']; ?>">
 </td></tr>
 <tr><td colspan="2" align="right">
-<input type="submit" name="submit" value="Send Message">
-</td></tr>
+
 </table>
 </form>
+
 <?php
 }
+  echo "</table>";
+  echo "</br>";
 ?>
                         </section>
             </article>

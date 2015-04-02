@@ -17,9 +17,11 @@
             <!-- Navigation with user controls after signed in -->
                 <nav id="top_nav">
                     <ul>
+                        <!--
                         <li><a href="#">Link1</a></li>
                         <li><a href="#">Link2</a></li>
                         <li><a href="#">Link3</a></li>
+                        -->
                         <? 
                         // Displays welcome message if user is logged in
                         if ($user_info['first_name']) { ?>
@@ -45,18 +47,53 @@
         </header>
             <!-- Main Article -->
             <article id="main_container">
-                <h1>My Listings</h1>
-                 <nav id="controls">
-                    <ul>
-                        <li><a href="#">Compose</a></li>
-                        <li><a href="#">Edit</a></li>
-                        <li><a href="#">Delete</a></li>
-                    </ul>
-                 </nav>
+                <h1><? echo ucfirst($user_info['first_name']) . "'s";?> Listings</h1>
+                <table>
+                    <td>Price</td>
+                    <td>Title</td>
+                    <td>ISBN-10</td>
+                    <td>Description</td>
+                    <? 
+                        $post_id = $_GET['post_id'];
+                        $price = $_GET['price'];
+                        $title = $_GET['title'];
+                        $isbn = $_GET['isbn'];
+                        $body = $_GET['body'];
+                        $userid = $user_info['user_id'];
+                        $user_email = $user_info['email'];
+                        //echo $price . " " . $title . " " . $isbn . " " . $body . " " . $post_id;
+                        // make sure we connect to the adlistings databases
+                        mysql_query("INSERT INTO `adlistings`( `post_id`, `price`, `title`, `isbn`, `body`,`email`) VALUES ('$post_id','$price','$title','$isbn','$body','$user_email')");
+                        
+                        $my_ads = mysql_query("SELECT * FROM `adlistings` WHERE `post_id` = '$userid'"); 
+                        while ($row = mysql_fetch_array($my_ads, MYSQL_NUM)){
+                             printf("<td>$%s.00 &nbsp; &nbsp; &nbsp; %s &nbsp; &nbsp; &nbsp; %s &nbsp; &nbsp; &nbsp;  %s </td>", $row[1], $row[2], $row[3], $row[4]);
+                            printf("<br>");
+                        }
+                        
+                    ?>
+                    </table>
                 <!-- Section for listings box container -->
                 <section id="listings_box">
-                    
-                </section>
+                    <form action="listings.php" method="get" id="adlistings">
+                        <input type="hidden" name="post_id" value="<? echo $user_info['user_id']?>"></input>
+                        <label for="price">Price - $</label>
+                        <input type="text" name="price" id="price" placeholder="0.00" size="2"></input>
+                        <label for="title">Title - </label>
+                        <input type="text" name="title" id="title" placeholder="Ad title here" size="50"></input>
+                        <label for="isbn">ISBN-10 - </label>
+                        <input type="text" name="isbn" id="isbn" placeholder="1111111111" size="10"></input>
+                        <br />
+                        <label for="body">Description: </label>
+                        <br />
+                        <textarea rows="4" cols="70" placeholder="Ad description here" name="body" id="body"></textarea>
+                        <br />
+                        <input type="submit" value="Post">
+                        <input type="reset" value="Reset">
+                    </form>
+                    </section>
+            <p> Note: book will not post if ther is a ' in any field.</p>
+            <p> Note: might need to change to $_POST so book does not post twice on page refresh.</p>
             </article>
             <footer>
                 <p>&copy;2015</p>

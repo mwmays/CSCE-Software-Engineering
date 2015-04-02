@@ -28,9 +28,11 @@
                 <!-- Navigation with user controls after signed in -->
                 <nav id="top_nav">
                     <ul>
+                        <!--
                         <li><a href="#">Link1</a></li>
                         <li><a href="#">Link2</a></li>
                         <li><a href="#">Link3</a></li>
+                        -->
                         <? 
                         // Displays welcome message if user is logged in
                         if ($user_info['first_name']) { ?>
@@ -44,7 +46,7 @@
                        <? } else { ?>
                             <form action="profile.php" method="post" name="log_in_form" id="log_in_form">
                                 <label for="email">Email: </label>
-                                <input type="text" name="email" id="email">
+                                <input type="email" name="email" id="email">
                                 <label for="password">Password: </label>
                                 <input type="password" name="password" id="password">
                                 <input type="submit" value="Log In">
@@ -65,11 +67,17 @@
                     <!-- Code for search bar implementation-->
                         <!-- Search Bar -->
                     <form action="search.php" method="get" name="search_bar">
-                        <input type="text" name="search" id="search" size="75" placeholder="0137035152">
+                        <input type="text" name="name" size="75" >
                         <input type="submit" value="Search">
                     </form>
                     
                 </section>
+                <p>Note: Demo Accounts: Email: bobsaget@gmail.com Password: password</p>
+                <p>Note: Demo Accounts: Email: dave@gmail.com Password: Password</p>
+                <!--
+                <p>Note: Demo Accounts: Email: kpbeyers@uark.edu Password: Password</p>
+                <p>Note: Demo Accounts: Email: bstricke@uark.edu Password: Password</p>
+                -->
             </article>
             <footer>
                 <p>&copy;2015</p>

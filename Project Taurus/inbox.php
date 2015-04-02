@@ -6,7 +6,7 @@
 <!doctype html>
 <html>
     <head>
-        <title><? echo ucfirst($user_info['first_name']) . "'s";?> Messages</title>
+        <title><? echo ucfirst($user_info['first_name']) . "'s";?> Inbox</title>
         <meta charset="UTF-8">
         <!-- Regular Stylesheet -->
         <link href="stylesheets/style.css" rel="stylesheet" type="text/css"/>
@@ -50,42 +50,85 @@
                 <h1>Messages</h1>
                         <!-- Section for messages box container -->
                         <section id="messages_box">
-                            <?php    
+                           <?php
 
+$user = $user_info['email'];
 
-$message = $_POST['forward2'];
- if (isset($_POST['submit']))
-{
-// if the form has been submitted, this inserts it into the Database 
-  $to_user = $_POST['to_user'];
-  $from_user = $user_info['email'];
-  $message = $_POST['message'];
-  mysql_query("INSERT INTO messages (to_user, message, from_user) VALUES ('$to_user', '$message', '$from_user')")or die(mysql_error());
-  echo "Message succesfully sent!"; 
-}
-else
-{
-    // if the form has not been submitted, this will show the form
+if (isset($_POST['view_old'])) {
+$user = $user_info['email'];
+$query = mysql_query("SELECT * FROM messages WHERE to_user = 'bobsaget@gmail.com'")or die(mysql_error());
+while($row2 = mysql_fetch_array($query))
+{ 
+  echo "<table border=1>";
+  echo "<tr><td>";
+ 
+  
+  echo "<tr><td>";
+  echo "To: ";
+  echo $row2['to_user'];
+  echo "</td></tr>";
+  echo "<tr><td>";
+  echo "From: ";
+  echo $row2['from_user'];
+  echo " ";
+  echo "</td></tr>";
+  echo "<tr><td>";
+  echo "Message: ";
+  echo bb ($row2['message']);
+  echo "</td></tr>";
+  echo "</br>";
 ?>
 <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
 <table border="0">
-<tr><td colspan=2><h3>Send Message:</h3></td></tr>
+<tr><td colspan=2></td></tr>
 <tr><td></td><td>
-<input type="hidden" name="from_user" maxlength="32" value = <?php echo $user_info['first_name']; ?>>
-</td></tr>
-<tr><td>To User: </td><td>
-<input type="text" name="to_user" maxlength="32" value = "" placeholder = "user_email@email.com">
-</td></tr>
-<tr><td>Message: </td><td>
-<TEXTAREA NAME="message" COLS=50 ROWS=5 WRAP=SOFT></TEXTAREA>
-</td></tr>
+
 <tr><td colspan="2" align="right">
-<input type="submit" name="submit" value="Send Message">
-</td></tr>
+
 </table>
 </form>
 <?php
 }
+}
+
+
+$user = $user_info['email'];
+$sql = mysql_query("SELECT * FROM messages WHERE to_user = '$user' ")or die(mysql_error());
+while($row = mysql_fetch_array($sql))
+{ 
+$user = $_SESSION['user'];
+  echo "<table border=1>";
+  echo "<tr><td>";
+ 
+ 
+  echo "To: ";
+  echo $row[to_user];
+  echo "</td></tr>";
+  echo "<tr><td>";
+  echo "From: ";
+  echo $row[from_user];
+  echo "</td></tr>";
+  echo "<tr><td>";
+  echo "Message: ";
+  echo $row[message];
+  echo "</td></tr>";
+
+?>
+
+<form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
+<table border="0">
+<tr><td colspan=2></td></tr>
+<tr><td></td><td>
+
+<tr><td colspan="2" align="right">
+
+</table>
+</form>
+
+<?
+
+}
+echo "</table>";
 ?>
                         </section>
             </article>

@@ -1,4 +1,15 @@
-$(document).ready(function() {
+/*$(document).ready(function() {
     $("#search").focus();
-    //alert("worked");
-});// end ready
+    
+    $("#log_in_form").validate({
+        rules: {
+            email: {
+                required: true;
+            },
+            password: {
+                required: true;
+            }
+        }
+        });// end validate
+        //alert("worked");
+});// end ready*/
