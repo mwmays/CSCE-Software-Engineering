@@ -6,7 +6,12 @@
 
 	//$query = $_GET["name"];
 function search($query){
+Global $price1;
+Global $price2;
 
+$price1 = '';
+$price2 = '';
+Global $Amazon;
 $Amazon = "http://www.amazon.com/dp/".$query;
 	$url = "http://ajax.googleapis.com/ajax/services/search/web?v=1.0&q=amazon%20".$query."%20buy%20new.%20price";
 
@@ -23,9 +28,11 @@ for ($i = 0; $i <= sizeof($myArray) - 1; $i++)
 	{
 		while($myArray[$i] != '.')
 		{
+			$price1=$price1.$myArray[$i+1];
 			$out = $out.$myArray[$i+1];
 			$i++;
 		}
+		$price1 = $price1.$myArray[$i+1].$myArray[$i+2];
 		$out = $out.$myArray[$i+1].$myArray[$i+2];
 		break;
 	}
@@ -33,12 +40,12 @@ for ($i = 0; $i <= sizeof($myArray) - 1; $i++)
 if ($out == '$')
 {
 	$out = "Amazon does not sell this book";
+	$price1 = '0';
 	print_r($out);
 	echo "<br>";
 }
 else
 { 
-
     print_r("Buy new from "."<a href=$Amazon>Amazon</a>"." for ".$out);
 	echo "<br>";
 	
@@ -52,6 +59,7 @@ $json = json_decode($body);
 
 
 $myArray = str_split($json->responseData->results[0]->content);
+Global $Barnes;
 $Barnes = "http://www.barnesandnoble.com/s/test?keyword=".$query;
 $out = '$';
 
@@ -61,9 +69,11 @@ for ($i = 0; $i <= sizeof($myArray) - 1; $i++)
 	{
 		while($myArray[$i] != '.')
 		{
+			$price2 = $price2.$myArray[$i+1];
 			$out = $out.$myArray[$i+1];
 			$i++;
 		}
+		$price2 = $price2.$myArray[$i+1].$myArray[$i+2];
 		$out = $out.$myArray[$i+1].$myArray[$i+2];
 		break;
 	}
@@ -71,17 +81,54 @@ for ($i = 0; $i <= sizeof($myArray) - 1; $i++)
 if ($out == '$')
 {
 	$out = "Barnes and Noble does not sell this book";
+	$price2 = '0';
 	print_r($out);
 	echo "<br>";
 }
 else
 {
+	
     print_r("List Price on "."<a href=$Barnes>Barnes and Noble</a>"."  is ".$out);
 	echo "<br>";
 }
 }
-?>
 
+
+function compare_price(){
+Global $price1;
+Global $price2;
+Global $Amazon;
+Global $Barnes;
+
+	
+	if($price1 != '0' & $price2 != '0'){
+		
+		if($price1 < $price2){
+			$lowest = $price1;
+			$name = "<a href=$Amazon>Amazon</a>";
+		}
+		else{
+			$lowest = $price2;
+			$name = "<a href=$Barnes>Barnes and Noble</a>";
+		}
+	
+		print_r("We recommend buying from " .$name . " for " .$lowest);
+	}
+	
+	else if($price1 != '0' & $price2 == '0'){
+		$lowest = $price1;
+		$name = "<a href=$Amazon>Amazon</a>";
+		print_r("We recommend buying from " .$name . " for " .$lowest);
+	}
+
+	else if($price1 == '0' & $price2 != '0'){
+		$lowest = $price2;
+		$name = "<a href=$Barnes>Barnes and Noble</a>";
+		print_r("We recommend buying from " .$name . " for " .$lowest);
+	}
+}
+
+?>
 <!doctype html>
 <html>
     <head>
@@ -156,6 +203,12 @@ printf("Retailers selling this book");
 printf("<br>");
 printf("<br>");
 search($query);
+printf("<br>");
+printf("<br>");
+compare_price();
+printf("<br>");
+printf("<br>");
+
  $my_ads = mysql_query("SELECT * FROM `adlistings` WHERE `isbn` = '$query'"); 
 
 if($my_ads != NULL){
