@@ -48,6 +48,7 @@
             <!-- Main Article -->
             <article id="main_container">
                 <h1><? echo ucfirst($user_info['first_name']) . "'s";?> Listings</h1>
+				
                 <table>
                     <td>Price</td>
                     <td>Title</td>
@@ -81,17 +82,43 @@
                         <input type="text" name="price" id="price" placeholder="0.00" size="2"></input>
                         <label for="title">Title - </label>
                         <input type="text" name="title" id="title" placeholder="Ad title here" size="50"></input>
-                        <label for="isbn">ISBN-10 - </label>
+						<br />
+						
+						<label for="isbn">ISBN-10 - </label>
                         <input type="text" name="isbn" id="isbn" placeholder="1111111111" size="10"></input>
                         <br />
                         <label for="body">Description: </label>
                         <br />
                         <textarea rows="4" cols="70" placeholder="Ad description here" name="body" id="body"></textarea>
                         <br />
-                        <input type="submit" value="Post">
+						<br />
+						<!-- Need to figure out how to store values    -->
+						<select> 
+						<option value="0">Please rate this book</option>
+						<option value="1">&bigstar;</option>
+						<option value="2">&bigstar;&bigstar;</option>
+						<option value="3">&bigstar;&bigstar;&bigstar;</option>
+						<option value="4">&bigstar;&bigstar;&bigstar;&bigstar;</option>
+						<option value="5">&bigstar;&bigstar;&bigstar;&bigstar;&bigstar;</option>
+						</select>
+						<br />
+						<br />
+						
+						<!-- Need to figure out how to store values    -->
+						<select> 
+						<option value="undefined">Was this book useful?</option>
+						<option value="yes">Yes</option>
+						<option value="no">No</option>
+						</select>
+						<br />
+						<br />
+						
+						<input type="submit" value="Post">
                         <input type="reset" value="Reset">
                     </form>
                     </section>
+					
+					<? echo $rating; ?>
             <p> Note: book will not post if ther is a ' in any field.</p>
             <p> Note: might need to change to $_POST so book does not post twice on page refresh.</p>
             </article>

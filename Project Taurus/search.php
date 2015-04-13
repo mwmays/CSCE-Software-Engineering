@@ -208,7 +208,6 @@ printf("<br>");
 compare_price();
 printf("<br>");
 printf("<br>");
-
  $my_ads = mysql_query("SELECT * FROM `adlistings` WHERE `isbn` = '$query'"); 
 
 if($my_ads != NULL){
@@ -217,7 +216,7 @@ if($my_ads != NULL){
             printf("<br>");
             printf("<br>");
                         while ($row = mysql_fetch_array($my_ads, MYSQL_NUM)){
-                             printf("<td>%s &nbsp; &nbsp; &nbsp; &nbsp; %s &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  %s  &nbsp; &nbsp; &nbsp;  $%s.00</td>", $row[2] ,$row[3], $row[5], $row[1]);
+                             printf("<td>%'-114s &nbsp; &nbsp; &nbsp; &nbsp; %s &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  %s  &nbsp; &nbsp; &nbsp;  $%s.00</td>", $row[2] ,$row[3], $row[5], $row[1]);
                             printf("<br>");
                         }
 }
