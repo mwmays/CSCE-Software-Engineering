@@ -52,13 +52,11 @@ else
 }
 
 
-$url = "http://ajax.googleapis.com/ajax/services/search/web?v=1.0&q=barnes%20and%20noble%20".$query."%20list%20price";
+$url = "http://barnesandnoble.com/s/test?keyword=".$query."&store=book";
+$myArray = str_split($url);
 
-$body = file_get_contents($url);
-$json = json_decode($body);
+$Barnes = "http://www.barnesandnoble.com/s/test?keyword=".$query;
 
-
-$myArray = str_split($json->responseData->results[0]->content);
 Global $Barnes;
 $Barnes = "http://www.barnesandnoble.com/s/test?keyword=".$query;
 $out = '$';
