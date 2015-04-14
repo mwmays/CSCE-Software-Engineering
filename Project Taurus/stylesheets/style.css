@@ -3,20 +3,17 @@
 * {
     margin: 0px;
     padding: 0px;
-  
 }
 
 body {
     margin-left: auto;
     margin-right: auto;
+    box-shadow: 5px 0px 5px #888888, -5px 0px 5px #888888;
     width: 980px;
-	/*background-color: #0066FF;*/
-	background: linear-gradient(#33CC33,#009900);
 }
 
 #main_container {
-    border: 1px solid black;
-
+    border: .5px solid black;
 }
 
 #search_box {
@@ -59,6 +56,30 @@ body {
     padding: 10px;
     width: 300px;
 }
+
+#error_box {
+    border: 1px solid black; 
+    border-radius: 3px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 50px;
+    margin-bottom: 100px;
+    padding: 10px;
+    width: 325px;
+}
+
+
+#error_box label {
+    float: left;
+    margin-left: 60px;
+}
+
+
+#error_message {
+    color: red;
+    font-family: 'Trebuchet MS';
+}
+
 
 #update_box {
     border: 1px solid black; 
@@ -114,13 +135,21 @@ table td{
 }
 
 header {
-    border: 1px solid black;
+    border: .5px solid black;
     height: 65px;
 }
 
+#header_title{
+    color: #000000;
+    font-family: 'Trebuchet MS';
+    font-size: 1.7em;
+    text-shadow: .5px .5px 1px #888888;
+    margin-left: 10px;
+}
 
 #top_nav {
-    border: 1px solid black;
+    background-color: #990000;
+    border: 1px solid #990000;
     margin-left: auto;
     margin-right: auto;
     padding: 5px;
@@ -137,6 +166,8 @@ header {
 
 #top_nav ul li a {
     text-decoration: none;
+    font-family: 'Trebuchet MS';
+    color: #ffffff;
     padding: 3px;
     
 }
@@ -144,6 +175,12 @@ header {
 /* Log In form in top_nav */
 #top_nav form{
     float: right;
+}
+
+#top_nav form label {
+    font-family: 'Trebuchet MS';
+    color: #ffffff;
+    text-shadow: .5px .5px 1px black;
 }
 
 /* Controls that show up after user has logged in */
@@ -160,17 +197,34 @@ header {
     float: right;
     clear: both;
     font-size: .75em;
-    margin-top: 7px;
+    margin-top: 20px;
+    padding: 2px;
 }
 
-#error_message {
-    float: right;
-    clear: both;
-    font-size: .75em;
-    margin-top: -15px;
-    margin-right: 300px;
-
+#create a {
+    color: #454545;
+    font-family: 'Trebuchet MS';
+    text-decoration: none;
+    font-size: .8em;
 }
+
+#create a:hover{
+    text-decoration: underline;
+}
+
+#user_profile_link{
+    color: #ffffff;
+}
+
+#user_profile_link:hover {
+    text-decoration: underline;
+}
+
+#user_profile {
+    color: #ffffff;
+}
+
+
 #controls ul li {
     float: left;
     list-style-type: none;
@@ -186,12 +240,20 @@ header {
     background-color: blue;
 }
 
+#compose_message_form {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
 footer {
+    background-color: #990000;
     border: 1px solid black;
     clear: both;
 }
 
 footer p {
+    font-family: 'Trebuchet MS';
+    color: #ffffff;
     margin: 0px; 
     padding: 0px;
     text-align: center;

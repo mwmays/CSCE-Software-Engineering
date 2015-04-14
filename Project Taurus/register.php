@@ -25,14 +25,13 @@
     </head>
     <body>
          <header>
-            <!-- Heading with name -->
-            <h1>Create Account</h1>
                 <!-- Navigation with user controls after signed in -->
                 <nav id="top_nav">
                     <ul>
                         <li><a href="index.php">Home</a></li>
                     </ul>
                 </nav>
+             <h1>Create Account</h1>
         </header>
              <!-- Main Article -->
              <article id="main_container">

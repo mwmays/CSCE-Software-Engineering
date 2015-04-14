@@ -17,15 +17,17 @@
            <!-- Navigation with user controls after signed in -->
                 <nav id="top_nav">
                     <ul>
+                        <!--
                         <li><a href="#">Link1</a></li>
                         <li><a href="#">Link2</a></li>
                         <li><a href="#">Link3</a></li>
+                        -->
                         <? 
                         // Displays welcome message if user is logged in
                         if ($user_info['first_name']) { ?>
                         <span id="user_controls">
-                            <li><h3><?echo ucfirst($user_info['first_name']) . " " . ucfirst($user_info['last_name']);?></h3></li>
-                            <li><a href="index.php"><img src="images/home.png" height="20" width="30" title="Home"</a></li>
+                            <li><h3 id="user_profile"><?echo ucfirst($user_info['first_name']) . " " . ucfirst($user_info['last_name']);?></h3></li>
+                            <li><a href="index.php"><img src="images/home2.png" height="20" width="30" title="Home"</a></li>
                             <li><a href="messages.php"><img src="images/mailbox.png" height="20" width="30" title="Messages"></a></li>
                             <li><a href="listings.php"><img src="images/listings.png" height="20" width="30" title="My Listings"></a></li>
                             <li><a href="logout.php"><img src="images/logout.png" height="20" width="60"></a></li>
@@ -42,11 +44,11 @@
 
                     </ul>
                 </nav>
+            <h1 id="header_title">Edit Profile</h1>
         </header>
             <!-- Main Article -->
             <article id="main_container">
                 <!-- Section for messages box container -->
-                <h1>Edit Profile</h1>
                 <section id="update_box">
                     <form action="" method="post">
                         <label for="first_name">First Name: </label>

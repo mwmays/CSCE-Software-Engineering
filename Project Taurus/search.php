@@ -129,6 +129,7 @@ Global $Barnes;
 }
 
 ?>
+
 <!doctype html>
 <html>
     <head>
@@ -216,7 +217,7 @@ if($num_ads > 0){
             printf("<br>");
             printf("<br>");
                         while ($row = mysql_fetch_array($my_ads, MYSQL_NUM)){
-                            printf("<td>--------------------------------------------------------------------------------------------- Title: %s &nbsp; &nbsp; &nbsp; &nbsp; ISBN: %s &nbsp; 
+                            printf("<td>------------------------------------------------------------------------------------------ Title: %s &nbsp; &nbsp; &nbsp; &nbsp; ISBN: %s &nbsp; 
 							&nbsp; &nbsp; &nbsp; &nbsp;	Email: %s  &nbsp; &nbsp; &nbsp;  price: $%s.00</td>", $row[2] ,$row[3], $row[5], $row[1]);
                             printf("<br>");
                         }
@@ -237,7 +238,7 @@ if($num_ads > 0){
 							else if($row1[6] == 4){ $row1[6] = "&bigstar;&bigstar;&bigstar;&bigstar;"; }
 							else if($row1[6] == 5){ $row1[6] = "&bigstar;&bigstar;&bigstar;&bigstar;&bigstar;"; }
 						
-                            printf("<td>--------------------------------------------------------------------------------------------- Rating: %s &nbsp; &nbsp; &nbsp; &nbsp;
+                            printf("<td>------------------------------------------------------------------------------------------ Rating: %s &nbsp; &nbsp; &nbsp; &nbsp;
 							Was this book useful? %s &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  Comments: %s </td>", $row1[6] ,$row1[7], $row1[4]);
                             printf("<br>");
 							

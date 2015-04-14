@@ -40,24 +40,48 @@
     }
 ?>
 <html>
-    <head>
-        <title></title>
+      <head>
+        <title>Home Page</title>
+        <meta charset="UTF-8">
+        <!-- Regular Stylesheet -->
+        <link href="stylesheets/style.css" rel="stylesheet" type="text/css"/>
+        <!-- Core Library Script -->
+        <script src="jquery/jquery-1.11.2.min.js"></script>
+        <!-- UserInterface Library Script -->
+        <script src="jquery/jquery-ui-1.10.4.custom.min.js"></script>
+        <!-- Jquery Validation Script -->
+        <script src="jquery/jquery.validate.min.js"></script>
+        <!-- Additional Methods Script -->
+        <script src="jquery/additional-methods.min.js"></script>
+        <!-- Plugin Script -->
+        <script src="jquery/validation/validate.js"></script>
+        
     </head>
     <body>
-        <form action="profile.php" method="post">
-            <ul>
-                <label for="email">Email</label>
-                <input type="text" name="email" id="email">
-                <br />
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password">
-                <br />
-                <input type="submit" value="Login"></input>
-            </ul>
-        <p>Don't have an account? <a href="register.php">Create Account</a></p>
-        </form>
-        <div id="error_message" style="color: red;">
-            <? print_errors($error_message) ?>
-        </div>
+        <!-- Header with navigation bar -->
+        <header>
+                <!-- Navigation with user controls after signed in -->
+                <nav id="top_nav">
+                </nav>
+            <h1 id="header_title">Log In</h1>
+        </header>
+        <section id="error_box">
+            <form action="profile.php" method="post">
+                <ul>
+                    <label for="email">Email: </label>
+                    <input type="text" name="email" id="email">
+                    <br />
+                    <label for="password">Password:  </label>
+                    <input type="password" name="password" id="password">
+                    <br />
+                    <input type="submit" value="Login"></input>
+                </ul>
+            <p>Don't have an account? <a href="register.php">Create Account</a></p>
+            <h5 id="error_message"><? print_errors($error_message) ?></h5>
+            </form>
+        </section>
+                <footer>
+                <p>&copy; 2015</p>
+            </footer>
     </body>
 </html>
