@@ -53,7 +53,7 @@
                     <td>Price</td>
                     <td>Title</td>
                     <td>ISBN-10</td>
-                    <td>Description</td>
+                    <td>Comments</td>
                     <? 
                         $post_id = $_GET['post_id'];
                         $price = $_GET['price'];
@@ -62,9 +62,11 @@
                         $body = $_GET['body'];
                         $userid = $user_info['user_id'];
                         $user_email = $user_info['email'];
+						$rating = $_GET['rating'];
+						$useful = $_GET['useful'];
                         //echo $price . " " . $title . " " . $isbn . " " . $body . " " . $post_id;
                         // make sure we connect to the adlistings databases
-                        mysql_query("INSERT INTO `adlistings`( `post_id`, `price`, `title`, `isbn`, `body`,`email`) VALUES ('$post_id','$price','$title','$isbn','$body','$user_email')");
+                        mysql_query("INSERT INTO `adlistings`( `post_id`, `price`, `title`, `isbn`, `body`,`email`,`rating`,`useful`) VALUES ('$post_id','$price','$title','$isbn','$body','$user_email','$rating','$useful')");
                         
                         $my_ads = mysql_query("SELECT * FROM `adlistings` WHERE `post_id` = '$userid'"); 
                         while ($row = mysql_fetch_array($my_ads, MYSQL_NUM)){
@@ -87,13 +89,14 @@
 						<label for="isbn">ISBN-10 - </label>
                         <input type="text" name="isbn" id="isbn" placeholder="1111111111" size="10"></input>
                         <br />
-                        <label for="body">Description: </label>
+						<br />
+                        <label for="body">Book comments: </label>
                         <br />
-                        <textarea rows="4" cols="70" placeholder="Ad description here" name="body" id="body"></textarea>
+                        <textarea rows="4" cols="70" placeholder="book comments here" name="body" id="body"></textarea>
                         <br />
 						<br />
 						<!-- Need to figure out how to store values    -->
-						<select> 
+						<select name = "rating" form = "adlistings"> 
 						<option value="0">Please rate this book</option>
 						<option value="1">&bigstar;</option>
 						<option value="2">&bigstar;&bigstar;</option>
@@ -105,7 +108,7 @@
 						<br />
 						
 						<!-- Need to figure out how to store values    -->
-						<select> 
+						<select name = "useful" form = "adlistings"> 
 						<option value="undefined">Was this book useful?</option>
 						<option value="yes">Yes</option>
 						<option value="no">No</option>
@@ -118,8 +121,8 @@
                     </form>
                     </section>
 					
-					<? echo $rating; ?>
-            <p> Note: book will not post if ther is a ' in any field.</p>
+					
+            <p> Note: book will not post if there is a ' in any field.</p>
             <p> Note: might need to change to $_POST so book does not post twice on page refresh.</p>
             </article>
             <footer>

@@ -209,16 +209,40 @@ compare_price();
 printf("<br>");
 printf("<br>");
  $my_ads = mysql_query("SELECT * FROM `adlistings` WHERE `isbn` = '$query'"); 
-
-if($my_ads != NULL){
+$num_ads = mysql_num_rows($my_ads);
+if($num_ads > 0){
             printf("<br>");
             printf("User listings for this book");
             printf("<br>");
             printf("<br>");
                         while ($row = mysql_fetch_array($my_ads, MYSQL_NUM)){
-                             printf("<td>%'-114s &nbsp; &nbsp; &nbsp; &nbsp; %s &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  %s  &nbsp; &nbsp; &nbsp;  $%s.00</td>", $row[2] ,$row[3], $row[5], $row[1]);
+                            printf("<td>--------------------------------------------------------------------------------------------- Title: %s &nbsp; &nbsp; &nbsp; &nbsp; ISBN: %s &nbsp; 
+							&nbsp; &nbsp; &nbsp; &nbsp;	Email: %s  &nbsp; &nbsp; &nbsp;  price: $%s.00</td>", $row[2] ,$row[3], $row[5], $row[1]);
                             printf("<br>");
                         }
+						
+			printf("<br>");
+			printf("<br>");
+            printf("<br>");
+			printf("User comments and ratings for this book");
+			printf("<br>");
+            printf("<br>");
+			mysql_data_seek($my_ads,0);
+						while ($row1 = mysql_fetch_array($my_ads, MYSQL_NUM)){
+						
+							if($row1[6] == 0){ $row1[6] = "no user rating entered."; }
+							else if($row1[6] == 1){ $row1[6] = "&bigstar;"; }
+							else if($row1[6] == 2){ $row1[6] = "&bigstar;&bigstar;"; }
+							else if($row1[6] == 3){ $row1[6] = "&bigstar;&bigstar;&bigstar;"; }
+							else if($row1[6] == 4){ $row1[6] = "&bigstar;&bigstar;&bigstar;&bigstar;"; }
+							else if($row1[6] == 5){ $row1[6] = "&bigstar;&bigstar;&bigstar;&bigstar;&bigstar;"; }
+						
+                            printf("<td>--------------------------------------------------------------------------------------------- Rating: %s &nbsp; &nbsp; &nbsp; &nbsp;
+							Was this book useful? %s &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  Comments: %s </td>", $row1[6] ,$row1[7], $row1[4]);
+                            printf("<br>");
+							
+                        }
+
 }
 ?>
                     
