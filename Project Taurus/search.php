@@ -5,7 +5,56 @@
 
 
 	//$query = $_GET["name"];
-function search($query){
+function search($namer){
+
+$name = str_split($namer);
+$full = "";
+for ($i = 0; $i < sizeof($name); $i++)
+{
+	if ($name[$i] == " ")
+	{
+		$full = $full.'+';
+	}
+	else
+	{
+		$full = $full.$name[$i];
+	}
+}
+
+$url = "https://www.googleapis.com/books/v1/volumes?q=".$full;
+
+$body = file_get_contents($url);
+$array = str_split($body);
+
+for ($i = 0; $i <= sizeof($array) - 1; $i++)
+{
+	if ($array[$i] == 'I')
+	{
+		if ($array[$i+1] == 'S')
+		{
+			if ($array[$i+2] == 'B')
+			{
+				if ($array[$i+3] == 'N')
+				{
+					if ($array[$i+4] == '_')
+					{
+						if ($array[$i+5] == '1')
+						{
+							if ($array[$i+6] == '0')
+							{
+								$out = $array[$i+31].$array[$i+32].$array[$i+33].$array[$i+34].$array[$i+35].$array[$i+36].$array[$i+37].$array[$i+38].$array[$i+39].$array[$i+40];
+								break;
+							}
+						}
+					}
+				}
+			}
+		}		
+	}
+}
+Global $query;
+$query = $out;
+
 Global $price1;
 Global $price2;
 
@@ -188,7 +237,7 @@ Global $Barnes;
             <article id="main_container">
                 <!-- Section for search box container -->
                 <section id="search_box">
-                    <p>Enter an ISBN for a book you would like to see the prices for.</p>
+                    <p>Enter a book and edition you would like to see the prices for.</p>
                     <!-- Code for search bar implementation-->
                         <!-- Search Bar -->
                     <form action="search.php" method="get" name="search_bar">
@@ -196,12 +245,12 @@ Global $Barnes;
                         <input type="submit" value="Search">
                     </form>
                     <?php
-$query = $_GET["name"];
+$namer = $_GET["name"];
 printf("<br>");
 printf("Retailers selling this book");
 printf("<br>");
 printf("<br>");
-search($query);
+search($namer);
 printf("<br>");
 printf("<br>");
 compare_price();
