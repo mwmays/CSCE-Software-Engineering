@@ -101,7 +101,7 @@ else
 }
 
 
-$url = "http://barnesandnoble.com/s/test?keyword=".$query."&store=book";
+$url = file_get_contents('http://barnesandnoble.com/s/test?keyword='.$query.'&store=book');
 $myArray = str_split($url);
 
 $Barnes = "http://www.barnesandnoble.com/s/test?keyword=".$query;
@@ -109,20 +109,24 @@ $Barnes = "http://www.barnesandnoble.com/s/test?keyword=".$query;
 Global $Barnes;
 $Barnes = "http://www.barnesandnoble.com/s/test?keyword=".$query;
 $out = '$';
-
+$j = 0;
 for ($i = 0; $i <= sizeof($myArray) - 1; $i++)
 {
 	if ($myArray[$i] == '$')
 	{
-		while($myArray[$i] != '.')
+		$j++;
+		if ($j==14)
 		{
-			$price2 = $price2.$myArray[$i+1];
-			$out = $out.$myArray[$i+1];
-			$i++;
+			while($myArray[$i] != '.')
+			{
+				$price2 = $price2.$myArray[$i+1];
+				$out = $out.$myArray[$i+1];
+				$i++;
+			}
+			$price2 = $price2.$myArray[$i+1].$myArray[$i+2];
+			$out = $out.$myArray[$i+1].$myArray[$i+2];
+			break;
 		}
-		$price2 = $price2.$myArray[$i+1].$myArray[$i+2];
-		$out = $out.$myArray[$i+1].$myArray[$i+2];
-		break;
 	}
 }
 if ($out == '$')
