@@ -163,19 +163,19 @@ Global $Barnes;
 			$name = "<a href=$Barnes>Barnes and Noble</a>";
 		}
 	
-		print_r("We recommend buying from " .$name . " for " .$lowest);
+		print_r("We recommend buying from " .$name . " for $" .$lowest);
 	}
 	
 	else if($price1 != '0' & $price2 == '0'){
 		$lowest = $price1;
 		$name = "<a href=$Amazon>Amazon</a>";
-		print_r("We recommend buying from " .$name . " for " .$lowest);
+		print_r("We recommend buying from " .$name . " for $" .$lowest);
 	}
 
 	else if($price1 == '0' & $price2 != '0'){
 		$lowest = $price2;
 		$name = "<a href=$Barnes>Barnes and Noble</a>";
-		print_r("We recommend buying from " .$name . " for " .$lowest);
+		print_r("We recommend buying from " .$name . " for $" .$lowest);
 	}
 }
 
@@ -269,7 +269,7 @@ if($num_ads > 0){
             printf("<br>");
                         while ($row = mysql_fetch_array($my_ads, MYSQL_NUM)){
                             printf("<td>------------------------------------------------------------------------------------------ Title: %s &nbsp; &nbsp; &nbsp; &nbsp; ISBN: %s &nbsp; 
-							&nbsp; &nbsp; &nbsp; &nbsp;	Email: %s  &nbsp; &nbsp; &nbsp;  price: $%s.00</td>", $row[2] ,$row[3], $row[5], $row[1]);
+							&nbsp; &nbsp; &nbsp; &nbsp;	Email: %s  &nbsp; &nbsp; &nbsp;  price: $%s</td>", $row[2] ,$row[3], $row[5], $row[1]);
                             printf("<br>");
                         }
 						

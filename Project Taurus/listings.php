@@ -65,11 +65,13 @@
 						$useful = $_GET['useful'];
                         //echo $price . " " . $title . " " . $isbn . " " . $body . " " . $post_id;
                         // make sure we connect to the adlistings databases
-                        mysql_query("INSERT INTO `adlistings`( `post_id`, `price`, `title`, `isbn`, `body`,`email`,`rating`,`useful`) VALUES ('$post_id','$price','$title','$isbn','$body','$user_email','$rating','$useful')");
-                        
+						if(isset($_GET['isbn'])){
+					   mysql_query("INSERT INTO `adlistings`( `post_id`, `price`, `title`, `isbn`, `body`,`email`,`rating`,`useful`) VALUES ('$post_id','$price','$title','$isbn','$body','$user_email','$rating','$useful')");
+                        }
                         $my_ads = mysql_query("SELECT * FROM `adlistings` WHERE `post_id` = '$userid'"); 
                         while ($row = mysql_fetch_array($my_ads, MYSQL_NUM)){
-                             printf("<td>$%s.00 &nbsp; &nbsp; &nbsp; %s &nbsp; &nbsp; &nbsp; %s &nbsp; &nbsp; &nbsp;  %s </td>", $row[1], $row[2], $row[3], $row[4]);
+						
+                             printf("<td>$%s &nbsp; &nbsp; &nbsp; %s &nbsp; &nbsp; &nbsp; %s &nbsp; &nbsp; &nbsp;  %s </td>", $row[1], $row[2], $row[3], $row[4]);
                             printf("<br>");
                         }
                         
