@@ -62,28 +62,44 @@ $price1 = '';
 $price2 = '';
 Global $Amazon;
 $Amazon = "http://www.amazon.com/dp/".$query;
-	$url = "http://ajax.googleapis.com/ajax/services/search/web?v=1.0&q=amazon%20".$query."%20buy%20new.%20price";
+$data = file_get_contents('http://www.amazon.com/dp/'.$query);
+$myArray = str_split($data);
 
-$body = file_get_contents($url);
-$json = json_decode($body);
-
-
-$myArray = str_split($json->responseData->results[0]->content);
 $out = '$';
 
 for ($i = 0; $i <= sizeof($myArray) - 1; $i++)
 {
-	if ($myArray[$i] == '$')
+	if ($myArray[$i] == 'B')
 	{
-		while($myArray[$i] != '.')
+		if ($myArray[$i+1] == 'u')
 		{
-			$price1=$price1.$myArray[$i+1];
-			$out = $out.$myArray[$i+1];
-			$i++;
+			if ($myArray[$i+2] == 'y')
+			{
+				if ($myArray[$i+4] == 'N')
+				{
+					if ($myArray[$i+5] == 'e')
+					{
+						for ($j = $i; $j < sizeof($myArray); $j++)
+						{
+							if ($myArray[$j] == '$')
+							{
+								while($myArray[$j] != '.')
+								{
+									$price1=$price1.$myArray[$j+1];
+									$out = $out.$myArray[$j+1];
+									$j++;
+								}
+								$price1 = $price1.$myArray[$j+1].$myArray[$j+2];
+								$out = $out.$myArray[$j+1].$myArray[$j+2];
+								break;
+							}
+							if ($out != '$')
+								break;
+						}
+					}
+				}
+			}
 		}
-		$price1 = $price1.$myArray[$i+1].$myArray[$i+2];
-		$out = $out.$myArray[$i+1].$myArray[$i+2];
-		break;
 	}
 }
 if ($out == '$')
