@@ -52,14 +52,28 @@ for ($i = 0; $i <= sizeof($array) - 1; $i++)
 		}		
 	}
 }
-Global $query;
-$query = $out;
-
 Global $price1;
 Global $price2;
+Global $price3;
 
 $price1 = '';
 $price2 = '';
+$price3 = '';
+$googlep = "$";
+for($i = 0; $i < sizeof($array); $i++)
+{
+	if($array[$i] == 'l' && $array[$i+1] == 'i' && $array[$i+2] == 's' && $array[$i+3] == 't' && $array[$i+4] == 'P' && $array[$i+5] == 'r' && $array[$i+6] == 'i' && $array[$i+7] == 'c' && $array[$i+8] == 'e')
+	{
+		$price3 = $array[$i+ 29].$array[$i+ 30].$array[$i+ 31].$array[$i+ 32]."0";
+		$googlep = $googlep.$array[$i+ 29].$array[$i+ 30].$array[$i+ 31].$array[$i+ 32]."0";
+		break;
+	}
+}
+
+Global $query;
+$query = $out;
+
+
 Global $Amazon;
 $Amazon = "http://www.amazon.com/dp/".$query;
 $data = file_get_contents('http://www.amazon.com/dp/'.$query);
@@ -156,6 +170,18 @@ else
 {
 	
     print_r("List Price on "."<a href=$Barnes>Barnes and Noble</a>"."  is ".$out);
+	echo "<br>";
+}
+$google = "https://books.google.com/books?id=wrOQLV6xB-wC&dq=isbn:".$query."&hl=en&sa=X&ei=5yQ5VdjnPILisASYs4HICw&ved=0CB4Q6AEwAA";
+if((intval($price1) - intval($price3)) > 100)
+{
+	$googlep = "Google Books Does not Sell this Book";
+	print_r($googlep);
+	echo "<br>";
+}
+else
+{
+	print_r("Buy new from "."<a href=$google>Google Books</a>"." for ".$googlep);
 	echo "<br>";
 }
 }
