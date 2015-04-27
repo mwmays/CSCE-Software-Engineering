@@ -1,5 +1,4 @@
 <?php
-//just adding a comment to upload again.
  // File includes for account system.
  include 'core/init.php';
 
@@ -64,8 +63,8 @@ for($i = 0; $i < sizeof($array); $i++)
 {
 	if($array[$i] == 'l' && $array[$i+1] == 'i' && $array[$i+2] == 's' && $array[$i+3] == 't' && $array[$i+4] == 'P' && $array[$i+5] == 'r' && $array[$i+6] == 'i' && $array[$i+7] == 'c' && $array[$i+8] == 'e')
 	{
-		$price3 = $array[$i+ 29].$array[$i+ 30].$array[$i+ 31].$array[$i+ 32]."0";
-		$googlep = $googlep.$array[$i+ 29].$array[$i+ 30].$array[$i+ 31].$array[$i+ 32]."0";
+		$price3 = $array[$i+ 29].$array[$i+ 30].$array[$i+ 31].$array[$i+ 32];
+		$googlep = $googlep.$array[$i+ 29].$array[$i+ 30].$array[$i+ 31].$array[$i+ 32];
 		break;
 	}
 }
@@ -172,8 +171,9 @@ else
     print_r("List Price on "."<a href=$Barnes>Barnes and Noble</a>"."  is ".$out);
 	echo "<br>";
 }
-$google = "https://books.google.com/books?id=wrOQLV6xB-wC&dq=isbn:".$query."&hl=en&sa=X&ei=5yQ5VdjnPILisASYs4HICw&ved=0CB4Q6AEwAA";
-if((intval($price1) - intval($price3)) > 100)
+Global $google;
+$google = "https://books.google.com/books?isbn=".$query;
+if((intval($price1) - intval($price3)) > 50 | (intval($price3) - intval($price1)) > 50)
 {
 	$googlep = "Google Books Does not Sell this Book";
 	print_r($googlep);
@@ -190,25 +190,50 @@ else
 function compare_price(){
 Global $price1;
 Global $price2;
+Global $price3;
 Global $Amazon;
 Global $Barnes;
-
+Global $google;
 	
-	if($price1 != '0' & $price2 != '0'){
-		
-		if($price1 < $price2){
+	if($price1 != '0' & $price2 != '0' & $price3 !='0'){
+		if($price1 < $price2 & $price1 < $price3){
 			$lowest = $price1;
 			$name = "<a href=$Amazon>Amazon</a>";
 		}
-		else{
+		else if ($price2 < $price1 & $price2 < $price3){
 			$lowest = $price2;
 			$name = "<a href=$Barnes>Barnes and Noble</a>";
 		}
-	
+		else if($price3 < $price1 & $price3 < $price2){
+			$lowest = $price3;
+			$name = "<a href=$google>Google</a>";
+		}
+		
+		else if($price1 == $price2 & $price1 == $price3){
+			$lowest = $price1;
+			$name = "<a href=$Amazon>Amazon</a>". " or ". "<a href=$Barnes>Barnes and Noble</a>". " or ". "<a href=$google>Google</a>";
+		}
+		
+		else if($price1 == $price2 & $price1 < $price3){
+			$lowest = $price1;
+			$name = "<a href=$Amazon>Amazon</a>". " or ". "<a href=$Barnes>Barnes and Noble</a>";
+		}
+		else if($price1 == $price3 & $price1 < $price2){
+			$lowest = $price1;
+			$name = "<a href=$Amazon>Amazon</a>". " or ". "<a href=$google>Google</a>";
+		}
+		else if($price2 == $price3 & $price2 < $price1){
+			$lowest = $price2;
+			$name = "<a href=$Barnes>Barnes and Noble</a>". " or ". "<a href=$google>Google</a>";
+		}
+		
+		
+		
 		print_r("We recommend buying from " .$name . " for $" .$lowest);
+		
 	}
 	
-	else if($price1 != '0' & $price2 == '0'){
+	else if($price1 != '0' & $price2 == '0' & $price3 =='0'){
 		$lowest = $price1;
 		$name = "<a href=$Amazon>Amazon</a>";
 		print_r("We recommend buying from " .$name . " for $" .$lowest);
@@ -217,6 +242,12 @@ Global $Barnes;
 	else if($price1 == '0' & $price2 != '0'){
 		$lowest = $price2;
 		$name = "<a href=$Barnes>Barnes and Noble</a>";
+		print_r("We recommend buying from " .$name . " for $" .$lowest);
+	}
+	
+	else if($price1 == '0' & $price2 == '0' & $price3 !='0'){
+		$lowest = $price3;
+		$name = "<a href=$google>Google</a>";
 		print_r("We recommend buying from " .$name . " for $" .$lowest);
 	}
 }
