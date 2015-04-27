@@ -63,7 +63,7 @@
             <article id="main_container">
                 <!-- Section for search box container -->
                 <section id="search_box">
-                    <p>Enter an ISBN for a book you would like to see the prices for.</p>
+                    <p>Enter textbook name:</p>
                     <!-- Code for search bar implementation-->
                         <!-- Search Bar -->
                     <form action="search.php" method="get" name="search_bar">
