@@ -29,7 +29,7 @@
                 </section>
             </article>
             <footer>
-                <p>&copy;2015</p>
+                <p></p>
             </footer>
     </body>
 </html>

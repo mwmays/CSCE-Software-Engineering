@@ -59,12 +59,14 @@
         
                         </form>
                     </section>
+					<!--
                         <p>Note: No code to validate user has entered valid info</p>
                         <br />
                         <p>Note: No code to verify if user has already registered</p>
+						-->
             </article>
             <footer>
-                <p>&copy;2015</p>
+                <p></p>
             </footer>
     </body>
 </html>

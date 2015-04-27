@@ -72,15 +72,17 @@
                     </form>
                     
                 </section>
+				<!--
                 <p>Note: Demo Accounts: Email: bobsaget@gmail.com Password: password</p>
                 <p>Note: Demo Accounts: Email: dave@gmail.com Password: Password</p>
+				-->
                 <!--
                 <p>Note: Demo Accounts: Email: kpbeyers@uark.edu Password: Password</p>
                 <p>Note: Demo Accounts: Email: bstricke@uark.edu Password: Password</p>
                 -->
             </article>
             <footer>
-                <p>&copy; 2015</p>
+                <p></p>
             </footer>
     </body>
 </html>

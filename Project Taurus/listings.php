@@ -121,11 +121,13 @@
                         <input type="reset" value="Reset">
                     </form>
                     </section>
+					<!--
             <p> Note: book will not post if ther is a ' in any field.</p>
             <p> Note: might need to change to $_POST so book does not post twice on page refresh.</p>
+			-->
             </article>
             <footer>
-                <p>&copy;2015</p>
+                <p></p>
             </footer>
     </body>
 </html>

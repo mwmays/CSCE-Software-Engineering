@@ -360,7 +360,7 @@ while($row = mysql_fetch_array( $sql ))
                         </section>
             </article>
             <footer>
-                <p>&copy;2015</p>
+                <p></p>
             </footer>
     </body>
 </html>
