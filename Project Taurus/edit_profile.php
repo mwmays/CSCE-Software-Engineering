@@ -1,7 +1,22 @@
 <?php
  // File includes for account system.
  include 'core/init.php';
+Global $success;
+				if(empty($_POST) === false){
+				//$fname = $_POST['first_name'];
+				//$lname = $_POST['last_name'];
+				//$email = $_POST['update_email'];
+				$newpass= md5($_POST['update_password']);
+				$verifypass=md5($_POST['update_verify_password']);
+				$id = $user_info['user_id'];
+				if($newpass==$verifypass){		
+					
+					//can only change password right now. if you try to update multiple fields it will not work.
+					mysql_query("UPDATE `profiles` SET  `password` = '$newpass' WHERE `user_id`= $id") or die (mysql_error());
+					$success ='true';	
+				}
 
+			    }
 ?>
 <!doctype html>
 <html>
@@ -48,10 +63,21 @@
         </header>
             <!-- Main Article -->
             <article id="main_container">
+				 
+				 <? Global $success;
+					if($success == 'true'){
+					echo "Successfully updated password!";
+					}
+				 ?>
+					
+			
                 <!-- Section for messages box container -->
                 <section id="update_box">
                     <form action="" method="post">
-                        <label for="first_name">First Name: </label>
+                        
+						<!-- see comment above for reasoning.
+						
+						<label for="first_name">First Name: </label>
                             <input type="text" name="first_name" id="first_name" placeholder="<? echo $user_info['first_name']; ?>">
                             <br />
                         <label for="last_name">Last Name: </label>
@@ -60,16 +86,21 @@
                         <label for="update_email">Email: </label>
                                 <input type="text" name="update_email" id="update_email" style="width: 150px" placeholder="<? echo $user_info['email']; ?>">
                                 <br />
-                            <label for="update_password">Password: </label>
+								
+						-->		
+								
+                            <label for="update_password">New Password: </label>
                                 <input type="password" name="update_password" id="update_password">
                                 <br />
                             <label for="update_verify_password">Verify Password: </label>
                                 <input type="password" name="update_verify_password" id="verify_password">
+								<input type="hidden" name = "set" id = "set"
                         <br />
                         <input type="submit" value="Submit Changes">
                     </form>
                 </section>
-                <p>Note: None of this functionality to update account works</p>
+				
+              
             </article>
             <footer>
                 <p>&copy;2015</p>

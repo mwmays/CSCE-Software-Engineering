@@ -24,8 +24,7 @@
                     <?echo "Successfully created account!";?>
                     <a href = "index.php">Go Home</a> 
                     <br />
-                    <?echo "An email has been sent to you please check email to activate account." ?>                   <br />
-                    <?echo "Note: this feature does not work at the moment all code to activate users has been commented out." ?>
+                
                     
                 </section>
             </article>
