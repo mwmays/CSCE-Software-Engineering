@@ -177,6 +177,7 @@ if((intval($price1) - intval($price3)) > 50 | (intval($price3) - intval($price1)
 {
 	$googlep = "Google Books Does not Sell this Book";
 	print_r($googlep);
+	$price3 = '0';
 	echo "<br>";
 }
 else
@@ -184,6 +185,7 @@ else
 	print_r("Buy new from "."<a href=$google>Google Books</a>"." for ".$googlep);
 	echo "<br>";
 }
+
 }
 
 
@@ -194,7 +196,7 @@ Global $price3;
 Global $Amazon;
 Global $Barnes;
 Global $google;
-	
+
 	if($price1 != '0' & $price2 != '0' & $price3 !='0'){
 		if($price1 < $price2 & $price1 < $price3){
 			$lowest = $price1;
@@ -239,7 +241,7 @@ Global $google;
 		print_r("We recommend buying from " .$name . " for $" .$lowest);
 	}
 
-	else if($price1 == '0' & $price2 != '0'){
+	else if($price1 == '0' & $price2 != '0' & $price3 == '0'){
 		$lowest = $price2;
 		$name = "<a href=$Barnes>Barnes and Noble</a>";
 		print_r("We recommend buying from " .$name . " for $" .$lowest);
@@ -248,6 +250,39 @@ Global $google;
 	else if($price1 == '0' & $price2 == '0' & $price3 !='0'){
 		$lowest = $price3;
 		$name = "<a href=$google>Google</a>";
+		print_r("We recommend buying from " .$name . " for $" .$lowest);
+	}
+	else if($price1 != '0' & $price2 != '0' & $price3 =='0'){
+		if($price1 < $price2){
+			$lowest = $price1;
+			$name = "<a href=$Amazon>Amazon</a>";
+		}
+		else{
+			$lowest = $price2;
+			$name = "<a href=$Barnes>Barnes and Noble</a>";
+		}
+		print_r("We recommend buying from " .$name . " for $" .$lowest);
+	}
+	else if($price1 != '0' & $price2 == '0' & $price3 !='0'){
+		if($price3 < $price1){
+			$lowest = $price3;
+			$name = "<a href=$google>Google</a>";
+		}
+		else{
+			$lowest = $price1;
+			$name = "<a href=$Amazon>Amazon</a>";
+		}
+		print_r("We recommend buying from " .$name . " for $" .$lowest);
+	}
+	else if($price1 = '0' & $price2 != '0' & $price3 != '0'){
+		if ($price3 < $price2){
+			$lowest = $price3;
+			$name = "<a href=$google>Google</a>";
+		}
+		else {
+			$lowest = $price2;
+			$name = "<a href=$Barnes>Barnes and Noble</a>";
+		}
 		print_r("We recommend buying from " .$name . " for $" .$lowest);
 	}
 }
